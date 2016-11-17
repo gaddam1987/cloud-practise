@@ -9,7 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>config-server</module>
-        <module>search-shops</module>
+        <module>order-system</module>
+        <module>customer</module>
+        <module>seller</module>
+        <module>payment</module>
     </modules>
     <packaging>pom</packaging>
 

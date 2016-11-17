@@ -1,0 +1,10 @@
+server:
+  port: 1024
+spring:
+    config:
+        name: config
+    cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/gaddam1987/config-repo
