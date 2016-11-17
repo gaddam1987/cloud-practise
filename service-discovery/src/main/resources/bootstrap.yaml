@@ -1,0 +1,19 @@
+server:
+    port: 2030
+spring:
+    application:
+        name: service-discovery
+    config:
+        name: service-discovery
+logging:
+    level:
+        com:
+            netflix:
+                eureka: OFF
+                discovery: OFF
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    hostname: localhost

@@ -13,6 +13,7 @@
         <module>customer</module>
         <module>seller</module>
         <module>payment</module>
+        <module>service-discovery</module>
     </modules>
     <packaging>pom</packaging>
 
