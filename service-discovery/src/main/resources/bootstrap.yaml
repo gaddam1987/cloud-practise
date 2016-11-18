@@ -1,19 +1,50 @@
 server:
-    port: 2030
+    port: 2031
 spring:
+    profiles: peer1
     application:
         name: service-discovery
     config:
         name: service-discovery
-logging:
-    level:
-        com:
-            netflix:
-                eureka: OFF
-                discovery: OFF
+
 eureka:
+  datacenter: x1
+  server:
+    registry-sync-retry-wait-ms: 1000
+    a-sgcache-expiry-timeout-ms: 20000
+    eviction-interval-timer-in-ms: 10000
+    peer-eureka-nodes-update-interval-ms: 3000
+    renewal-threshold-update-interval-ms: 60000
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    service-url:
+        defaultZone: http://peer2:2030/eureka/
   instance:
-    hostname: localhost
+    hostname: peer1
+    instance-id: ${eureka.instance.hostname}-${server.port}
+
+
+---
+server:
+  port: 2030
+
+spring:
+    profiles: peer2
+    application:
+        name: service-discovery
+    config:
+        name: service-discovery
+
+eureka:
+  datacenter: x2
+  server:
+    registry-sync-retry-wait-ms: 1000
+    a-sgcache-expiry-timeout-ms: 20000
+    eviction-interval-timer-in-ms: 10000
+    peer-eureka-nodes-update-interval-ms: 3000
+    renewal-threshold-update-interval-ms: 60000
+  client:
+    service-url:
+        defaultZone: http://peer1:2031/eureka/
+  instance:
+    hostname: peer2
+    instance-id: ${eureka.instance.hostname}-${server.port}

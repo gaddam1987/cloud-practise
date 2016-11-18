@@ -1,3 +1,13 @@
+server:
+  port: 4030
 spring:
+    profiles: inst1
+    config:
+        name: customer
+---
+server:
+  port: 4031
+spring:
+    profiles: inst2
     config:
         name: customer

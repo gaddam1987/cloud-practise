@@ -11,6 +11,12 @@ logging:
             netflix:
                 eureka: OFF
                 discovery: OFF
+say-hello:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:4030,localhost:4031
+    ServerListRefreshInterval: 15000
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 5
