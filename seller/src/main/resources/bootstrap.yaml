@@ -11,7 +11,8 @@ logging:
             netflix:
                 eureka: OFF
                 discovery: OFF
-say-hello:
+
+customer:
   ribbon:
     eureka:
       enabled: false

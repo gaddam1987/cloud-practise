@@ -8,9 +8,9 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
-@RibbonClient(name = "customer")
+@RibbonClient(name = "customer", configuration = CustomerHelloConfiguration.class)
 public class SellerApplication {
     @LoadBalanced
     @Bean

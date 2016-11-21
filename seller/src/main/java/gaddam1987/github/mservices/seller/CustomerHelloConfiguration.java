@@ -7,15 +7,19 @@ import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 public class CustomerHelloConfiguration {
-    @Autowired
-    IClientConfig ribbonClientConfig;
 
+    @Autowired
+    IClientConfig config;
+
+    /**
     @Bean
     public IPing ribbonPing(IClientConfig config) {
         return new PingUrl();
     }
+     **/
 
     @Bean
     public IRule ribbonRule(IClientConfig config) {
