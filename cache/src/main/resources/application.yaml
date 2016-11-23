@@ -1,0 +1,19 @@
+# check RedisProperties for all the available properties for clustring and sentineal configuration.
+
+#Time update
+#Extraorinary CAB meeting will be discussed on Friday
+spring:
+    redis:
+      timeout: 1000
+      pool:
+        max-idle: 10
+        min-idle: 0
+        max-active: 10
+        max-wait: 10
+
+logging:
+    level:
+        redis:
+            clients:
+                jedis: DEBUG
+
