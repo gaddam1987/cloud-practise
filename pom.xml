@@ -16,6 +16,7 @@
         <module>service-discovery</module>
         <module>integration</module>
         <module>cache</module>
+        <module>cloud-stream</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -38,7 +39,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR5</version>
+                <version>Brixton.SR6</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
