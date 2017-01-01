@@ -17,6 +17,7 @@
         <module>integration</module>
         <module>cache</module>
         <module>cloud-stream</module>
+        <module>eventhub</module>
     </modules>
     <packaging>pom</packaging>
 

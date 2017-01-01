@@ -24,7 +24,7 @@ public class SellerServiceInstanceRestController {
     public List<ServiceInstance> serviceInstancesByApplicationName(
             @PathVariable String applicationName) {
         String forObject = restTemplate.getForObject("http://customer/ping", String.class);
-        System.out.println(forObject);
+
         return this.discoveryClient.getInstances(applicationName);
     }
 }
