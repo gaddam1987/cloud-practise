@@ -28,7 +28,7 @@ public class EventSender {
         pingEvent.setEventNumber(a.getAndIncrement());
 
         ConnectionStringBuilder connStr = new ConnectionStringBuilder(configurationProperties.getNamespace(),
-                configurationProperties.getEventHubName(),
+                configurationProperties.getPaymentEventHubName(),
                 configurationProperties.getSasKeyName(),
                 configurationProperties.getSasKey());
 
@@ -41,7 +41,6 @@ public class EventSender {
         } catch (Exception e) {
             log.warn("Some shit happened", e);
         }
-
-        log.info("%s: Send Complete... for %s", Instant.now(), pingEvent);
+        log.info("{}: Send Complete... for {}", Instant.now(), pingEvent);
     }
 }

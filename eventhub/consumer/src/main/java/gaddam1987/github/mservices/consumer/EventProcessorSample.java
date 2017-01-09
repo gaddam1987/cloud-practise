@@ -15,6 +15,7 @@ import java.time.Instant;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
+import java.util.logging.Level;
 
 import static com.microsoft.azure.eventhubs.EventHubClient.DEFAULT_CONSUMER_GROUP_NAME;
 
@@ -28,28 +29,31 @@ public class EventProcessorSample implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("sample.............");
         ConnectionStringBuilder connStr = new ConnectionStringBuilder(configurationProperties.getNamespace(),
-                configurationProperties.getEventHubName(),
+                configurationProperties.getPaymentEventHubName(),
                 configurationProperties.getSasKeyName(),
                 configurationProperties.getSasKey());
 
         configurationProperties.setHostName(UUID.randomUUID().toString());
 
         EventProcessorHost host = new EventProcessorHost(configurationProperties.getHostName(), //Host Name
-                configurationProperties.getEventHubName(), // eventHubPath
-                DEFAULT_CONSUMER_GROUP_NAME, //ConsumrGroupName
+                configurationProperties.getPaymentEventHubName(), // eventHubPath
+                configurationProperties.getPaymentConsumerGroup1(), //ConsumrGroupName
                 connStr.toString(), //eventHubConnectionString
                 configurationProperties.getStorageConnectionString(), //storageConnectionString
                 configurationProperties.getStorageAccountName()); //storageAccountName
 
+
         System.out.println("Registering host named " + host.getHostName());
 
         EventProcessorOptions options = new EventProcessorOptions();
+
         options.setExceptionNotification(new ErrorNotificationHandler());
-        options.setInitialOffsetProvider(s -> Instant.now());
+        options.setInitialOffsetProvider(s -> {
+            return "0";
+        });
 
         try {
-            host.registerEventProcessor(EventProcessor.class, options)
-                    .get();
+            host.registerEventProcessor(EventProcessor.class, options).get();
 
         } catch (Exception e) {
             System.out.print("Failure while registering: ");

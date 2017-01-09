@@ -12,6 +12,34 @@ public class AzureConfigurationProperties {
     private String eventHubName;
     private String sasKeyName;
     private String sasKey;
+    private String paymentEventHubName;
+
+    public String getPaymentEventHubName() {
+        return paymentEventHubName;
+    }
+
+    public void setPaymentEventHubName(String paymentEventHubName) {
+        this.paymentEventHubName = paymentEventHubName;
+    }
+
+    public String getPaymentConsumerGroup1() {
+        return paymentConsumerGroup1;
+    }
+
+    public void setPaymentConsumerGroup1(String paymentConsumerGroup1) {
+        this.paymentConsumerGroup1 = paymentConsumerGroup1;
+    }
+
+    public String getPaymentConsumerGroup2() {
+        return paymentConsumerGroup2;
+    }
+
+    public void setPaymentConsumerGroup2(String paymentConsumerGroup2) {
+        this.paymentConsumerGroup2 = paymentConsumerGroup2;
+    }
+
+    private String paymentConsumerGroup1;
+    private String paymentConsumerGroup2;
 
     public String getConsumerGroupName() {
         return consumerGroupName;
